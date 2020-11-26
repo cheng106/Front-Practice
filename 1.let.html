@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var 宣告的變數作用域是function內
+        // let 宣告的變數作用域是區塊block(大刮號)內
+        function testA() {
+            var a = 0;
+        }
+        console.log(a); // undefined
+        {
+            var a = 1;
+            let b = 2;
+        }
+        console.log(a);
+        console.log(b); // Uncaught ReferenceError: b is not defined
+
+    </script>
+</body>
+</html>
