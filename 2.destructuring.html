@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 以前要把變數從陣列賦值只能這麼做
+        let numbers = [1, 2, 3];
+        // let a = numbers[0];
+        // let b = numbers[1];
+        // let c = numbers[2];
+        // console.log(a, b, c);   // 1,2,3
+
+        // 現在可以使用解構賦值的方式
+        let [a, b, c] = numbers;
+        console.log(a, b, c)
+
+        // 解構物件，在宣告的時候可以改變名稱，像是(name:user)指的意思是將person物件中取出name並賦值給user
+        const person = {
+            name: "mark",
+            age: 30,
+            language: ['java', 'js', 'springBoot']
+        }
+        const { name: user, age, language } = person;
+        console.log(user, age, language);
+
+        // 字串搜尋
+        let str = "hello, world!";
+        console.log(str.startsWith("hello")); // true
+        console.log(str.endsWith("d!")); // true
+        console.log(str.includes(",")); // true
+        console.log(str.includes(" ")); // true
+
+        // 字串模版
+        let str2 = `<div>
+                <span>hello, world</span>
+            </div>`;
+        console.log(str2);
+        // 可在模版中串接變數，也可在此格式中直接使用JS表達式或是function
+        let info = `Hi I'm ${user}, ${age + 5} years old! ${say("HA HA")}`;
+        console.log(info);
+
+        // function雖然宣告在這裡但因為提升(Hoisting)所以可以被上面的info使用。
+        function say(params) {
+            return `I say ${params}`
+        }
+
+    </script>
+</body>
+
+</html>
