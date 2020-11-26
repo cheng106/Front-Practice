@@ -1,25 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         // var 宣告的變數作用域是function內
         // let 宣告的變數作用域是區塊block(大刮號)內
-        function testA() {
-            var a = 0;
-        }
-        console.log(a); // undefined
-        {
-            var a = 1;
-            let b = 2;
-        }
-        console.log(a);
-        console.log(b); // Uncaught ReferenceError: b is not defined
+        // function testA() {
+        //     var a = 0;
+        // }
+        // console.log(a); // undefined
+        // {
+        //     var a = 1;
+        //     let b = 2;
+        // }
+        // console.log(a);
+        // console.log(b); // Uncaught ReferenceError: b is not defined
 
+        // var 可以重複宣告
+        // let 只能宣告一次，重複宣告會出現錯誤
+        // var c = 1
+        // var c = 2
+        // let d = 3
+        // let d = 4
+        // console.log(c) // 2
+        // console.log(d) // let.html:30 Uncaught SyntaxError: Identifier 'd' has already been declared
+
+        // var 會讓變數提升(Hoisting)
+        // let 不會變數提升
+        // console.log(e);
+        // var e = 10;
+        // // 這裡的e變數提升其實就是JS會先宣告e但未賦值，所以會顯示undefined
+        // console.log(f); //Uncaught ReferenceError: Cannot access 'f' before initialization
+        // let f = 20;
+
+        // const:宣告後不允許被改變，一旦宣告就必須初始化，否則會出現錯誤
+        const g = 30;
+        // g = 1; // Uncaught TypeError: Assignment to constant variable
+        // 但如果const是放入陣列或是物件，就可以被修改
+        // 因陣列和物件都是reference type
+        // 指向都會是同個記憶體位置，所以就算改變宣告const的陣列也是可以被修改
+        const arr = [1, 2, 3]
+        arr.push(4)
+        console.log(arr) // [1,2,3,4]
+
+        const obj = {
+            person: "mark"
+        }
+        obj.person = "mark2"
+        console.log(obj) // mark2
+
+        // 除了這種情況，這種另外賦值等於是建立一個新的物件，這就會出現錯誤
+        obj = { // Uncaught TypeError: Assignment to constant variable.
+            person: "andy"
+        }
     </script>
 </body>
+
 </html>
