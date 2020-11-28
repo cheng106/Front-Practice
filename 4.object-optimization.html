@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const person = {
+            name: "mark",
+            age: 30,
+            language: ['java', 'javascript', 'node']
+        }
+
+        // Array(3)
+        // 0: "name"
+        // 1: "age"
+        // 2: "language"
+        console.log(Object.keys(person));
+
+
+        // Array(3)
+        // 0: "mark"
+        // 1: 30
+        // 2: (3) ["java", "javascript", "node"]
+        console.log(Object.values(person));
+
+
+        // Array(3)
+        // 0: (2) ["name", "mark"]
+        // 1: (2) ["age", 30]
+        // 2: (2) ["language", Array(3)]
+        console.log(Object.entries(person));
+
+        const target = { a: 1 };
+        const source1 = { b: 2 };
+        const source2 = { c: 3 };
+
+        // {a: 1, b: 2, c: 3}
+        Object.assign(target, source1, source2);
+        console.log(target);
+
+        // 宣告物件簡寫
+        const age = 30;
+        const name = "Mark";
+
+        // 以前
+        const person1 = { age: age, name: name };
+        // 現在 (若值的變數和key相同則可簡寫)
+        const person2 = { age, name };
+        console.log(person1)
+        console.log(person2)
+
+        // 物件函數屬性簡寫
+        let person3 = {
+            name: "Mark",
+            // 以前
+            eat: function (food) {
+                console.log(this.name + " eat " + food)
+            },
+            // 🚀⭐⭐重要：箭頭函數不能使用this，要使用物件.屬性這種方式取得資料
+            //eat2: food => console.log(this.name + " eat " + food)
+            eat2: food => console.log(person3.name + " eat " + food),
+            // eat3的方式常用
+            eat3(food) {
+                console.log(this.name + " eat " + food)
+            }
+        }
+
+        person3.eat("banana")
+        person3.eat2("banana")
+        person3.eat3("orange")
+
+        // 展開運算符(Spread Operator)
+        // 深複製 （https://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/）
+        let user1 = { name: "Amber", age: 20 }
+        let someone = { ...user1 }
+        console.log(someone)
+
+        // 物件合併
+        let age1 = { age: 22 }
+        let name1 = { name: "Amber2" }
+        // 將age1和name1的物件拆分出來放到user2
+
+        let user2 = { ...age1, ...name1 }
+        console.log(user2)
+
+        // ES7的其餘運算符(Rest Operator) 宣告的變數名稱要和Key名稱一樣，其餘的不用一樣沒關係
+        let { teacher, ...student } = { teacher: "mark", user2: "andy", user3: "peter", user4: "amy", user5: "amber" }
+        console.log(teacher)
+        console.log(student)
+    </script>
+</body>
+
+</html>

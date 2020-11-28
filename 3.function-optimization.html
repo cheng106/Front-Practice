@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ==========================參數預設值==========================
+        // 在ES6之前要給函數一個預設參數必須自己做
+        function add(a, b) {
+            b = b || 1;
+            return a + b;
+        }
+        console.log(add(10)); // 11
+
+        // 現在可以直接給預設值
+        function add2(a, b = 1) {
+            return a + b;
+        }
+        console.log(add2(20)); // 21
+        // =============================================================
+
+        // ====================其餘參數(Rest parameters)==================
+        // 這部分跟JAVA差不多
+        function test(...params) {
+            console.log(params.length);
+        }
+        test(1, 2) // 2
+        test(1, 2, 3, 4) // 4
+        // =============================================================
+
+        // ==========================箭頭函數============================
+        var print = obj => console.log(obj);
+        print("hello");
+
+        var sum = function (a, b) {
+            return a + b;
+        }
+
+        var sum2 = (a, b) => a + b;
+        console.log(sum2(11, 12));
+
+        var sum3 = (a, b) => {
+            c = a + b;
+            return a + c;
+        }
+        console.log(sum3(10, 20));
+
+        const person = {
+            name: "Mark",
+            age: 30,
+            language: ['java', 'javascript', 'node'],
+        }
+
+        function hello(person) {
+            console.log("hello, " + person.name);
+        }
+
+        // 把person物件帶進參數中，並且解構出name屬性
+        var hello2 = ({ name }) => console.log("hello, " + name);
+        hello2(person);
+        // =============================================================
+    </script>
+</body>
+
+</html>
