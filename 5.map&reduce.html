@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 陣列中新增map和reduce方法
+        // map():接收一個函數，將原陣列中的所有元素用這個函數處理後放入新陣列返回
+        let arr = [1, 20, 30, 2];
+        // arr = arr.map((item) => {
+        //     return item * 2;
+        // })
+        // 或是簡單點的寫法
+        arr = arr.map(item => item * 2);
+        console.log(arr); // [2, 40, 60, 4]
+
+        // reduce() 將陣列中的每一個元素依序執行回調函數，不包括陣列中被刪除或從未被賦值的元素
+        // arr.reduce(callback,[initialValue])
+        /*
+            1.previousValue (上一次使用回調返回的值，或是提供初始值)
+            2.currentValue (陣列中目前被處理的元素)
+            3.index (目前元素在陣列中的索引)
+            4.array (使用reduce的陣列)
+        */
+        let result = arr.reduce((a, b) => {
+            console.log("上一次處理的值", a);
+            console.log("目前在處理的值", b);
+            return a + b;
+        }, 100) // 給100初始值
+        console.log(result)
+    </script>
+</body>
+
+</html>
